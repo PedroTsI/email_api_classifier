@@ -1,0 +1,12 @@
+Assunto: URGENTE: Problema com o Login após a Atualização
+
+Prezada equipe de suporte,
+
+Desde que a plataforma foi atualizada na noite de ontem, estou enfrentando dificuldades críticas para acessar minha conta. Ao inserir meu nome de usuário e senha, recebo a mensagem de erro "Falha na autenticação - Código 403".
+
+Eu já tentei limpar o cache do navegador e redefinir a senha (duas vezes), mas o erro persiste. Minha conta é a usuario@empresa.com.br. É crucial que eu tenha acesso antes das 14h, pois preciso aprovar faturas importantes.
+
+Por favor, investiguem e me informem sobre os passos para corrigir isso ou se é necessário um reset manual.
+
+Atenciosamente,
+João Silva
