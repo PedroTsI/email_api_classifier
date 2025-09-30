@@ -1,12 +1,33 @@
 from fastapi import FastAPI, UploadFile, HTTPException, File
 from file_processor import extract_text_from_file
 from ai_service import classify_text_with_gemini
+from fastapi.middleware.cors import CORSMiddleware
 
 # Criação do Endpoint da API
 app = FastAPI(
     title="API de Classificação e Automação de E-mail por IA",
     description="Endpoint para classificar conteúdo de arquivos e gerar uma resposta automática."
 )
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+@app.get("/health")
+def health_check():
+    """
+    Endpoint simples para verificar a saúde da API.
+    Retorna um JSON básico para confirmar que o serviço está no ar.
+    """
+    return {"hello": "world"}
 
 @app.post("/classify_file")
 async def classify_file(file: UploadFile = File(...)):
