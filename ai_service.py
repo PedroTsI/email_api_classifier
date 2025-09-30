@@ -25,7 +25,7 @@ def classify_text_with_gemini(text_content: str) -> dict:
     {text_content}
     ---
     
-    Responda apenas com um objeto JSON, seguindo este formato EXATO:
+    Responda apenas com um objeto JSON, seguindo este formato EXATO, caso o texto seja muito pequeno e não tenha conteudo, informe que o texto não se trata de um Email:
     {{"classification": "Produtivo" ou "Improdutivo", "email_subject": "O assunto extraído", "auto_response": "A resposta automática gerada"}}
     """
 
