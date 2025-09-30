@@ -6,11 +6,10 @@ from google import genai
 load_dotenv()
 
 # Configuração da Chave de API
-GEMINI_API_KEY = "AIzaSyCfD-WDAsWGJkWVgTLGU2jiAhrw7SE02B4"
-# GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-# if not GEMINI_API_KEY:
-#     print("\nERRO: A variável de ambiente GEMINI_API_KEY não foi encontrada!")
-#     print("Crie um arquivo .env na mesma pasta com GEMINI_API_KEY=\"SUA_CHAVE_AQUI\"\n")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    print("\nERRO: A variável de ambiente GEMINI_API_KEY não foi encontrada!")
+    print("Crie um arquivo .env na mesma pasta com GEMINI_API_KEY=\"SUA_CHAVE_AQUI\"\n")
 
 # Inicialização do Cliente Gemini
 try:
