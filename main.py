@@ -1,5 +1,5 @@
 import uvicorn
-from app import app # Importa a instância 'app' do módulo api
+from api import app # Importa a instância 'app' do módulo api
 
 # Bloco de Execução
 if __name__ == "__main__":
