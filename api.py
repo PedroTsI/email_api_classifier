@@ -31,6 +31,7 @@ def health_check():
 
 @app.post("/classify_file")
 async def classify_file(file: UploadFile = File(...)):
+    MIN_TEXT_LENGTH = 30
     """
     Recebe um arquivo (.txt ou .pdf), extrai o texto e retorna sua classificação, assunto e resposta automática.
     """
@@ -38,6 +39,17 @@ async def classify_file(file: UploadFile = File(...)):
     # 1. Extração de Conteúdo (SRP: file_processor)
     file_content = extract_text_from_file(file)
     
+    if not file_content or len(file_content.strip()) < MIN_TEXT_LENGTH:
+        # Se o texto for muito curto, classificamos diretamente como "Não é um e-mail"
+        # e retornamos uma resposta de sucesso (status 200), evitando o erro.
+        return {
+            "status": "success",
+            "filename": file.filename,
+            "classification": "Não é um e-mail",
+            "email_subject": "Texto muito curto para análise",
+            "auto_response": f"O conteúdo do arquivo é muito curto (menos de {MIN_TEXT_LENGTH} caracteres) para ser processado como um e-mail."
+        }
+
     # 2. Processamento e Geração (SRP: ai_service)
     ia_result = classify_text_with_gemini(file_content)
     
