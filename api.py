@@ -23,25 +23,16 @@ app.add_middleware(
 
 @app.get("/health")
 def health_check():
-    """
-    Endpoint simples para verificar a saúde da API.
-    Retorna um JSON básico para confirmar que o serviço está no ar.
-    """
     return {"hello": "world"}
 
 @app.post("/classify_file")
 async def classify_file(file: UploadFile = File(...)):
     MIN_TEXT_LENGTH = 30
-    """
-    Recebe um arquivo (.txt ou .pdf), extrai o texto e retorna sua classificação, assunto e resposta automática.
-    """
     
     # 1. Extração de Conteúdo (SRP: file_processor)
     file_content = extract_text_from_file(file)
     
     if not file_content or len(file_content.strip()) < MIN_TEXT_LENGTH:
-        # Se o texto for muito curto, classificamos diretamente como "Não é um e-mail"
-        # e retornamos uma resposta de sucesso (status 200), evitando o erro.
         return {
             "status": "success",
             "filename": file.filename,

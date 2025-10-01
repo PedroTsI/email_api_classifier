@@ -1,13 +1,11 @@
 import io
 import logging
 from fastapi import UploadFile, HTTPException
-from config import pypdf # CORREÇÃO: Importação absoluta
+from config import pypdf
 
-# Configuração básica de logging. (Pode ser configurada centralmente no main.py se preferir)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def extract_text_from_file(file: UploadFile) -> str:
-    """Extrai o texto do arquivo, suportando .txt e .pdf."""
     logging.info(f"Iniciando extração do arquivo: {file.filename}")
     file_extension = file.filename.split('.')[-1].lower()
     
@@ -28,7 +26,6 @@ def extract_text_from_file(file: UploadFile) -> str:
             
             reader = pypdf.PdfReader(pdf_file)
             
-            # MELHORIA DE PERFORMANCE: Usar list comprehension e join é mais rápido que concatenação +=
             text_parts = [page.extract_text() for page in reader.pages]
             text = "\n".join(filter(None, text_parts))
             

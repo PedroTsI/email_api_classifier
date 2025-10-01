@@ -1,9 +1,8 @@
 import json
 from google.genai import types
-from config import client, GEMINI_API_KEY # Importa o cliente e a chave do config
+from config import client, GEMINI_API_KEY
 
 def classify_text_with_gemini(text_content: str) -> dict:
-    """Usa o modelo Gemini para classificar, extrair o assunto e gerar uma resposta."""
     if not GEMINI_API_KEY or client is None:
         return {
             "classification": "Erro de Configuração (Chave API ausente)", 

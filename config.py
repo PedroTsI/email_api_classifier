@@ -17,7 +17,6 @@ try:
 except Exception:
     client = None # O cliente pode ser None se a chave falhar, e isso será tratado no ai_service.py
 
-# Verifica a disponibilidade do pypdf (para File Processor)
 try:
     import pypdf
 except ImportError:
