@@ -20,11 +20,16 @@ Antes de começar, certifique-se de ter instalado:
     ```bash
     pip install -r requirements.txt
 
-3. Rodar aplicação
+3. Crie um Arquivo .env
+    
+    Crie um arquivo .env e adicione a variavel GEMINI_API_KEY e adicione a chave da API do Gemini, neste formato
+    GEMINI_API_KEY="SUA_CHAVE" 
+
+4. Rodar aplicação
     ```bash
     python3 main.py
 
-4. Testar aplicação
+5. Testar aplicação
 
     Para testar aplicação utilize Insomnia ou Postman
     Crie uma requisição POST com URL = http://127.0.0.1:8000/classify_file
